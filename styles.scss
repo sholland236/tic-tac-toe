@@ -1,3 +1,5 @@
+@import './assets/styles/_typography';
+
 * {
     padding: 0;
     margin: 0;
@@ -7,15 +9,22 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: #4361EE;
+    background-color: #FFB703;
     padding: 30px;
-    // display: flex;
-    // flex-direction: column;
+    font-family: $primary-font;
 }
 
 h1 {
     text-align: center;
     margin: 10px;
+}
+
+h5 {
+    text-align: center;
+}
+
+.end {
+    padding-bottom: 10px;
 }
 
 .grid {
@@ -24,6 +33,7 @@ h1 {
     grid-gap: 3px;
     &__cell {
         border: 3px solid black;
+        border-radius: 3px;
         max-width: 30vw;
         background-color: white;
         // centralise player piece
@@ -31,12 +41,6 @@ h1 {
         justify-content: center;
         align-items: center;
     }
-}
-
-.restart {
-    margin-top: 50px;
-    width: 50vw;
-    height: 30px;
 }
 
 // make grid cells square
@@ -48,4 +52,17 @@ h1 {
     padding-bottom: 100%;
     // makes block element
     display: block;
+}
+
+.container {
+    text-align: center;
+}
+
+.restart {
+    margin-top: 50px;
+    width: 50vw;
+    height: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 3px;
 }
