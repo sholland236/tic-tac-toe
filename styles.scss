@@ -1,14 +1,51 @@
 * {
     padding: 0;
     margin: 0;
-    
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #4361EE;
+    padding: 30px;
+    // display: flex;
+    // flex-direction: column;
 }
 
 h1 {
     text-align: center;
+    margin: 10px;
 }
 
-main {
+.grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+    &__cell {
+        border: 3px solid black;
+        max-width: 30vw;
+        background-color: white;
+        // centralise player piece
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.restart {
+    margin-top: 50px;
+    width: 50vw;
+    height: 30px;
+}
+
+// make grid cells square
+// before is pseudocode
+.grid > .grid__cell::before {
+    // content required for before to work
+    content: "";
+    // forces height to be at least as tall as is wide
+    padding-bottom: 100%;
+    // makes block element
+    display: block;
 }
