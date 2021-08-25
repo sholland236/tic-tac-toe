@@ -27,6 +27,7 @@ h5 {
     padding-bottom: 10px;
 }
 
+// FIX: as screen grows grid gets too tall and pushes others off page
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
