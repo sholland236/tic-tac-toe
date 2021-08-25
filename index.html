@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- css link -->
     <link rel="stylesheet" href="styles.css">
+    <!-- font links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+    <!-- icons link -->
+    <script src="https://kit.fontawesome.com/4f8a72519a.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Tic-Tac-Toe</h1>
@@ -25,8 +29,18 @@
         <div class="grid__cell">8</div>
         <div class="grid__cell">9</div>
     </main>
-    <div class="container">
-        <button class="restart">Restart Game</button>
+    <div class="players">
+        <div class="player players__one">
+            <span class="player__icon fas fa-cat"></span>
+            <h3>Player One</h3>
+        </div>
+        <div class="player players__two">
+            <span class="player__icon fas fa-dog"></span>
+            <h3>Player Two</h3>
+        </div>
+    </div>
+    <div class="button">
+        <button class="button__restart">Start New Game</button>
     </div>
 </body>
 </html>

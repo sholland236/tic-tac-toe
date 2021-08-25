@@ -46,12 +46,23 @@ h5 {
   display: block;
 }
 
-.container {
+.players {
+  display: flex;
+  justify-content: space-around;
+}
+.players .player {
   text-align: center;
+  padding: 25px;
+}
+.players .player__icon {
+  font-size: 45px;
+  padding-bottom: 5px;
 }
 
-.restart {
-  margin-top: 50px;
+.button {
+  text-align: center;
+}
+.button__restart {
   width: 50vw;
   height: 50px;
   background-color: white;
