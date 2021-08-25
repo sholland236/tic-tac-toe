@@ -1,0 +1,80 @@
+@import './assets/styles/_typography';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #FFB703;
+    padding: 30px;
+    font-family: $primary-font;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+h5 {
+    text-align: center;
+}
+
+.end {
+    padding-bottom: 10px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+    &__cell {
+        border: 3px solid black;
+        border-radius: 3px;
+        max-width: 30vw;
+        background-color: white;
+        // centralise player piece
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// make grid cells square
+// before is pseudocode
+.grid > .grid__cell::before {
+    // content required for before to work
+    content: "";
+    // forces height to be at least as tall as is wide
+    padding-bottom: 100%;
+    // makes block element
+    display: block;
+}
+
+.players {
+    display: flex;
+    justify-content: space-around;
+    .player {
+        text-align: center;
+        padding: 25px;
+        &__icon {
+            font-size: 45px;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+.button {
+    text-align: center;
+    &__restart {
+        // margin-top: 10px;
+        width: 50vw;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
+}

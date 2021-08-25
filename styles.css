@@ -1,0 +1,71 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #FFB703;
+  padding: 30px;
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px;
+}
+
+h5 {
+  text-align: center;
+}
+
+.end {
+  padding-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3px;
+}
+.grid__cell {
+  border: 3px solid black;
+  border-radius: 3px;
+  max-width: 30vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid > .grid__cell::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+}
+.players .player {
+  text-align: center;
+  padding: 25px;
+}
+.players .player__icon {
+  font-size: 45px;
+  padding-bottom: 5px;
+}
+
+.button {
+  text-align: center;
+}
+.button__restart {
+  width: 50vw;
+  height: 50px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 3px;
+}
