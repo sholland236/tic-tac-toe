@@ -10,8 +10,18 @@ const clearCells = () => {
 };
 restart.addEventListener("click", clearCells);
 
-// create players to contain pieces
+// Player objects - should they  be classes?
+const playerOne = {
+    name: "Player One",
+    // how to add icon
+}
+const playerTwo = {
+    name: "Player Two",
+    // add icon
+}
+
 // create currentPlayer for what piece to add to cell
+const currentPlayer = playerOne;
 
 // create function to add piece to cell
 // create function to switch player
