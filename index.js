@@ -1,31 +1,48 @@
+// still need to work on colour, for pieces, _variables file
+
 // need to put all loose info in classes/objects
-// first cell only 'cells'
 const cells = document.querySelectorAll(".cell");
+const cellContainers = document.querySelectorAll(".grid__cell");
 const restart = document.querySelector(".button__restart");
 
-// how to stop player taken cell already selected??
+// how to stop player taking cell already selected??
 
-// Player objects - need to add pieces      !!!
-// not looking at innerHTML, looking at class list
+// Player objects
 // can i add "fas fa-cat" for the piece, then access later: if currentPlayer.name === "Player One" cell.classList.addClass(currentPlayer.piece)     ???
 class Player {
-    constructor(name, piece) {
+    constructor(name, pieceParent, pieceAnimal) {
         this.name = name;
-        this.piece = piece;
+        this.pieceParent = pieceParent;
+        this.pieceAnimal = pieceAnimal;
     }
 }
-const playerOne = new Player("Player One", "fas fa-cat");
-const playerTwo = new Player("Player Two", "fas fa-dog");
+// does this work?
+const playerOne = new Player("Player One", "fas", "fa-cat");
+const playerTwo = new Player("Player Two", "fas", "fa-dog");
 
 // create currentPlayer for what piece to add to cell
 let currentPlayer = playerOne;
 
-// create function to add piece to cell - how to select the cell - one for each or queryall??                      use query all - one function to add icon,switch to next player and check for win
-const cellSelected = () => {
-    // add piece to sell
+// create function to add piece to cell - use query all - one function to add icon,switch to next player and check for win
+// SOMETIMES DOESN'T WORK?? KEEP A LOOK OUT
+const cellSelected = (cell) => {
+    // add piece to cell
+    cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
     // check if won
     // change to other player
+    if (currentPlayer.name === "Player One") {
+        currentPlayer = playerTwo;
+        // is second if required?
+    } else if (currentPlayer.name == "Player Two") {
+        currentPlayer = playerOne;
+    }
 }
+cellContainers.forEach((cell) => {
+    cell.addEventListener("click", () => {
+        cellSelected(cell);
+    })
+})
+
 // create function to switch player - is it a function or just set to other player at end of above function?
 
 // create ways to win
