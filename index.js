@@ -1,4 +1,4 @@
-// still need to work on colour, for pieces, _variables file
+// still need to work on colour, + for pieces, _variables file
 
 // need to put all loose info in classes/objects
 const cells = document.querySelectorAll(".cell");
@@ -17,7 +17,6 @@ const cellNine = document.querySelector("#cell-nine");
 // how to stop player taking cell already selected??
 
 // Player objects
-// can i add "fas fa-cat" for the piece, then access later: if currentPlayer.name === "Player One" cell.classList.addClass(currentPlayer.piece)     ???
 class Player {
     constructor(name, pieceParent, pieceAnimal) {
         this.name = name;
@@ -25,31 +24,31 @@ class Player {
         this.pieceAnimal = pieceAnimal;
     }
 }
-
 const playerOne = new Player("Player One", "fas", "fa-cat");
 const playerTwo = new Player("Player Two", "fas", "fa-dog");
 
-// create currentPlayer for what piece to add to cell
 let currentPlayer = playerOne;
 let win = false;
 let winningPlayer;
 
-// create function to add piece to cell - use query all - one function to add icon,switch to next player and check for win
-// SOMETIMES DOESN'T WORK?? KEEP A LOOK OUT
+// add piece to cell
 const cellSelected = (cell) => {
-    // add piece to cell
-    cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
-    // check if won - still to complete
-    hasWon();
-    if (win) {
-        console.log("WINNER");
-    }
-    // change to other player
-    if (currentPlayer.name === "Player One") {
-        currentPlayer = playerTwo;
-        // is second 'if' required?
-    } else if (currentPlayer.name == "Player Two") {
-        currentPlayer = playerOne;
+    if  (win === false) {
+        // add piece to cell
+        cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
+        // check if won - still to complete
+        hasWon();
+        if (win) {
+            // change to confetti?
+            window.alert(`${currentPlayer.name} won the game!`);
+        }
+        // change to other player
+        if (currentPlayer.name === "Player One") {
+            currentPlayer = playerTwo;
+            // is second 'if' required?
+        } else if (currentPlayer.name == "Player Two") {
+            currentPlayer = playerOne;
+        }
     }
 }
 cellContainers.forEach((cell) => {
@@ -59,27 +58,60 @@ cellContainers.forEach((cell) => {
 })
 
 // create ways to win
-// how to shorten this
-// only cat can win currently
+// works for cats only at the moment
 const hasWon = () => {
-    const topRow = cellOne.childNodes[1].classList.contains("fa-cat") && cellTwo.childNodes[1].classList.contains("fa-cat") && cellThree.childNodes[1].classList.contains("fa-cat");
-    const middleRow = cellFour.childNodes[1].classList.contains("fa-cat") && cellFive.childNodes[1].classList.contains("fa-cat") && cellSix.childNodes[1].classList.contains("fa-cat");
-    const bottomRow = cellSeven.childNodes[1].classList.contains("fa-cat") && cellEight.childNodes[1].classList.contains("fa-cat") && cellNine.childNodes[1].classList.contains("fa-cat");
-    const leftColumn = cellOne.childNodes[1].classList.contains("fa-cat") && cellFour.childNodes[1].classList.contains("fa-cat") && cellSeven.childNodes[1].classList.contains("fa-cat");
-    const middleColumn = cellTwo.childNodes[1].classList.contains("fa-cat") && cellFive.childNodes[1].classList.contains("fa-cat") && cellEight.childNodes[1].classList.contains("fa-cat");
-    const rightColumn = cellThree.childNodes[1].classList.contains("fa-cat") && cellSix.childNodes[1].classList.contains("fa-cat") && cellNine.childNodes[1].classList.contains("fa-cat");
-    const leftDiagonal = cellOne.childNodes[1].classList.contains("fa-cat") && cellFive.childNodes[1].classList.contains("fa-cat") && cellNine.childNodes[1].classList.contains("fa-cat");
-    const rightDiagonal = cellThree.childNodes[1].classList.contains("fa-cat") && cellFive.childNodes[1].classList.contains("fa-cat") && cellSeven.childNodes[1].classList.contains("fa-cat");
-    if (topRow || middleRow || bottomRow || leftColumn || middleColumn || rightColumn || leftDiagonal || rightDiagonal) {
+    let cellsArray = [[cellOne, cellTwo, cellThree], [cellFour, cellFive, cellSix], [cellSeven, cellEight, cellNine]];
+    if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[0][1].classList.contains("fa-cat") && cellsArray[0][2].classList.contains("fa-cat")) {
         win = true;
-    }
+    } else if (cellsArray[1][0].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[1][2].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[2][0].classList.contains("fa-cat") && cellsArray[2][1].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[1][0].classList.contains("fa-cat") && cellsArray[2][0].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][1].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][1].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][2].classList.contains("fa-cat") && cellsArray[1][2].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][2].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][0].classList.contains("fa-cat")) {
+        win = true;
+    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[0][1].classList.contains("fa-dog") && cellsArray[0][2].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[1][0].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[1][2].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[2][0].classList.contains("fa-dog") && cellsArray[2][1].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[1][0].classList.contains("fa-dog") && cellsArray[2][0].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[0][1].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][1].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[0][2].classList.contains("fa-dog") && cellsArray[1][2].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
+        win = true;
+    } else if (cellsArray[0][2].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][0].classList.contains("fa-dog")) {
+        win = true;
+    };
+    
+    // winning combinations
+    // [0][0] === [0][1] === [0][2]
+    // [1][0] === [1][1] === [1][2]
+    // [2][0] === [2][1] === [2][2]
+    // [0][0] === [1][0] === [2][0]
+    // [0][1] === [1][1] === [2][1]
+    // [0][2] === [1][2] === [2][2]
+    // [0][0] === [1][1] === [2][2]
+    // [0][2] === [1][1] === [0][2]
+    // loop?
 }
 
 
 // create functionality for when player wins
 // create functionality for when no player wins
 
-// create function - works for only one cell - how to work for others
+// clear cells function
 const clearCells = () => {
     cells.forEach(cell => {
         if (cell.classList.contains("fa-cat")) {
