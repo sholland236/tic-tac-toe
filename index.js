@@ -1,6 +1,3 @@
-// still need to work on colour, + for pieces, _variables file
-
-// need to put all loose info in classes/objects
 const cellContainers = document.querySelectorAll(".grid__cell");
 const restart = document.querySelector(".button__restart");
 
@@ -29,8 +26,38 @@ const cellSelected = (cell) => {
         // check if won - still to complete
         hasWon();
         if (win) {
-            // change to confetti?
-            window.alert(`${currentPlayer.name} won the game!`);
+            var myCanvas = document.createElement('canvas');
+            document.body.appendChild(myCanvas);
+
+            var myConfetti = confetti.create(myCanvas, {
+                resize: true,
+                useWorker: true
+            });
+            var duration = 3 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                // launch a few confetti from the left edge
+                confetti({
+                particleCount: 7,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 }
+                });
+                // and launch a few from the right edge
+                confetti({
+                particleCount: 7,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 }
+                });
+
+                // keep going until we are out of time
+                if (Date.now() < end) {
+                requestAnimationFrame(frame);
+                }
+            }());
+            // window.alert(`${currentPlayer.name} won the game!`);
         }
         // change to other player
         if (currentPlayer.name === "Player One") {
