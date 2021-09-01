@@ -30,11 +30,11 @@ h5 {
     padding-bottom: 10px;
 }
 
-// FIX: as screen grows grid gets too tall and pushes others off page
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3px;
+    max-width: 600px;
     &__cell {
         border: 3px solid $tertiary-color;
         border-radius: 3px;
@@ -81,5 +81,40 @@ h5 {
         background-color: white;
         border: 2px solid $tertiary-color;
         border-radius: 3px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: 45px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+
+    .grid {
+        min-height: 500px;
+        min-width: 500px;
+        margin: 20px;
+    }
+
+    .players > .player {
+        font-size: 25px;
+        &__icon {
+            font-size: 25px;
+        }
+    }
+
+    .button__restart {
+        max-width: 350px;
+        margin: 15px;
+        font-size: 20px;
     }
 }
