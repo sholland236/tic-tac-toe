@@ -1,81 +1,36 @@
+import Player from "./scripts/classes/Player.js";
+
 const cellContainers = document.querySelectorAll(".grid__cell");
 const restart = document.querySelector(".button__restart");
 
 // how to stop player taking cell already selected??
 
-// Player objects
-class Player {
-    constructor(name, pieceParent, pieceAnimal) {
-        this.name = name;
-        this.pieceParent = pieceParent;
-        this.pieceAnimal = pieceAnimal;
-    }
-}
 const playerOne = new Player("Player One", "fas", "fa-cat");
 const playerTwo = new Player("Player Two", "fas", "fa-dog");
 
 let currentPlayer = playerOne;
 let win = false;
-let winningPlayer;
+// let winningPlayer;
 
-// add piece to cell
-const cellSelected = (cell) => {
+const cellSelectedByPlayer = (cell) => {
     if  (win === false) {
-        // add piece to cell
-        cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
-        // check if won - still to complete
-        hasWon();
-        if (win) {
-            var myCanvas = document.createElement('canvas');
-            document.body.appendChild(myCanvas);
-
-            var myConfetti = confetti.create(myCanvas, {
-                resize: true,
-                useWorker: true
-            });
-            var duration = 3 * 1000;
-            var end = Date.now() + duration;
-
-            (function frame() {
-                // launch a few confetti from the left edge
-                confetti({
-                particleCount: 7,
-                angle: 60,
-                spread: 55,
-                origin: { x: 0 }
-                });
-                // and launch a few from the right edge
-                confetti({
-                particleCount: 7,
-                angle: 120,
-                spread: 55,
-                origin: { x: 1 }
-                });
-
-                // keep going until we are out of time
-                if (Date.now() < end) {
-                requestAnimationFrame(frame);
-                }
-            }());
-            // window.alert(`${currentPlayer.name} won the game!`);
-        }
-        // change to other player
-        if (currentPlayer.name === "Player One") {
-            currentPlayer = playerTwo;
-            // is second 'if' required?
-        } else if (currentPlayer.name == "Player Two") {
-            currentPlayer = playerOne;
-        }
+        addPiece(cell);
+        checkForWinner();
+        playerWins(win);
+        changePlayer();
     }
 }
 cellContainers.forEach((cell) => {
     cell.addEventListener("click", () => {
-        cellSelected(cell);
+        cellSelectedByPlayer(cell);
     })
 })
 
-// create ways to win
-const hasWon = () => {
+const addPiece = (cell) => {
+    cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
+}
+
+const checkForWinner = () => {
     const cellOne = document.querySelector("#cell-one");
     const cellTwo = document.querySelector("#cell-two");
     const cellThree = document.querySelector("#cell-three");
@@ -121,11 +76,50 @@ const hasWon = () => {
     };
 }
 
+const playerWins = (win) => {
+    if (win) {
+        var myCanvas = document.createElement('canvas');
+        document.body.appendChild(myCanvas);
 
-// create functionality for when player wins
-// create functionality for when no player wins
+        var myConfetti = confetti.create(myCanvas, {
+            resize: true,
+            useWorker: true
+        });
+        var duration = 3 * 1000;
+        var end = Date.now() + duration;
 
-// clear cells function
+        (function frame() {
+            // launch a few confetti from the left edge
+            confetti({
+            particleCount: 7,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 }
+            });
+            // and launch a few from the right edge
+            confetti({
+            particleCount: 7,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 }
+            });
+
+            // keep going until we are out of time
+            if (Date.now() < end) {
+            requestAnimationFrame(frame);
+            }
+        }());
+    }
+}
+
+const changePlayer = () => {
+    if (currentPlayer.name === "Player One") {
+        currentPlayer = playerTwo;
+    } else if (currentPlayer.name == "Player Two") {
+        currentPlayer = playerOne;
+    }
+}
+
 const clearCells = () => {
     const cells = document.querySelectorAll(".cell");
     cells.forEach(cell => {
