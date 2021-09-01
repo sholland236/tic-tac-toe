@@ -63,6 +63,9 @@ h5 {
   font-size: 45px;
   padding-bottom: 5px;
 }
+.players .player input {
+  max-width: 130px;
+}
 
 .button {
   text-align: center;
@@ -101,6 +104,9 @@ h5 {
   }
   .players > .player__icon {
     font-size: 25px;
+  }
+  .players > .player input {
+    max-width: 300px;
   }
 
   .button__restart {

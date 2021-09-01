@@ -3,8 +3,6 @@ import Player from "./scripts/classes/Player.js";
 const cellContainers = document.querySelectorAll(".grid__cell");
 const restart = document.querySelector(".button__restart");
 
-// how to stop player taking cell already selected??
-
 const playerOne = new Player("Player One", "fas", "fa-cat");
 const playerTwo = new Player("Player Two", "fas", "fa-dog");
 
@@ -13,11 +11,14 @@ let win = false;
 // let winningPlayer;
 
 const cellSelectedByPlayer = (cell) => {
+    // use if win=true display winner
     if  (win === false) {
-        addPiece(cell);
-        checkForWinner();
-        playerWins(win);
-        changePlayer();
+        if (!(cell.childNodes[1].classList.contains("fa-cat")) && !(cell.childNodes[1].classList.contains("fa-dog"))) {
+            addPiece(cell);
+            checkForWinner();
+            playerWins(win);
+            changePlayer();
+        }
     }
 }
 cellContainers.forEach((cell) => {
