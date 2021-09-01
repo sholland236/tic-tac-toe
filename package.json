@@ -1,0 +1,22 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "\"tic-tac-toe game\"",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sholland236/tic-tac-toe.git"
+  },
+  "author": "sholland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sholland236/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/sholland236/tic-tac-toe#readme",
+  "dependencies": {
+    "canvas-confetti": "^1.4.0"
+  }
+}
