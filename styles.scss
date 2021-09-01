@@ -1,4 +1,5 @@
 @import './assets/styles/_typography';
+@import './assets/styles/_variables';
 
 * {
     padding: 0;
@@ -9,14 +10,16 @@
 body {
     width: 100vw;
     height: 100vh;
-    background-color: #FFB703;
+    background-color: $primary-color;
     padding: 30px;
     font-family: $primary-font;
+    color: $tertiary-color;
 }
 
 h1 {
     text-align: center;
     margin: 10px;
+    font-size: 45px;
 }
 
 h5 {
@@ -33,7 +36,7 @@ h5 {
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 3px;
     &__cell {
-        border: 3px solid black;
+        border: 3px solid $tertiary-color;
         border-radius: 3px;
         max-width: 30vw;
         background-color: white;
@@ -41,6 +44,8 @@ h5 {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: $secondary-color;
+        font-size: 35px;
     }
 }
 
@@ -74,8 +79,8 @@ h5 {
         // margin-top: 10px;
         width: 50vw;
         height: 50px;
-        background-color: white;
-        border: 2px solid black;
+        background-color: #8ecae6;
+        border: 2px solid $tertiary-color;
         border-radius: 3px;
     }
 }

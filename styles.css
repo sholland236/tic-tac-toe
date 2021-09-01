@@ -10,11 +10,13 @@ body {
   background-color: #FFB703;
   padding: 30px;
   font-family: "Raleway", sans-serif;
+  color: #023047;
 }
 
 h1 {
   text-align: center;
   margin: 10px;
+  font-size: 45px;
 }
 
 h5 {
@@ -31,13 +33,15 @@ h5 {
   grid-gap: 3px;
 }
 .grid__cell {
-  border: 3px solid black;
+  border: 3px solid #023047;
   border-radius: 3px;
   max-width: 30vw;
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #219ebc;
+  font-size: 35px;
 }
 
 .grid > .grid__cell::before {
@@ -65,7 +69,7 @@ h5 {
 .button__restart {
   width: 50vw;
   height: 50px;
-  background-color: white;
-  border: 2px solid black;
+  background-color: #8ecae6;
+  border: 2px solid #023047;
   border-radius: 3px;
 }
