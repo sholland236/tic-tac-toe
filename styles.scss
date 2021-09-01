@@ -76,10 +76,9 @@ h5 {
 .button {
     text-align: center;
     &__restart {
-        // margin-top: 10px;
         width: 50vw;
         height: 50px;
-        background-color: #8ecae6;
+        background-color: white;
         border: 2px solid $tertiary-color;
         border-radius: 3px;
     }
