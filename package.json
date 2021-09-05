@@ -4,7 +4,8 @@
   "description": "\"tic-tac-toe game\"",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d node_modules/canvas-confetti/dist"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/sholland236/tic-tac-toe#readme",
   "dependencies": {
     "canvas-confetti": "^1.4.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }

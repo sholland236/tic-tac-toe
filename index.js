@@ -8,15 +8,13 @@ const playerTwo = new Player("Player Two", "fas", "fa-dog");
 
 let currentPlayer = playerOne;
 let win = false;
-// let winningPlayer;
 
 const cellSelectedByPlayer = (cell) => {
-    // use if win=true display winner
     if  (win === false) {
         if (!(cell.childNodes[1].classList.contains("fa-cat")) && !(cell.childNodes[1].classList.contains("fa-dog"))) {
             addPiece(cell);
             checkForWinner();
-            playerWins(win);
+            playerWins();
             changePlayer();
         }
     }
@@ -77,7 +75,7 @@ const checkForWinner = () => {
     };
 }
 
-const playerWins = (win) => {
+const playerWins = () => {
     if (win) {
         var myCanvas = document.createElement('canvas');
         document.body.appendChild(myCanvas);
