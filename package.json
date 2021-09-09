@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/sholland236/tic-tac-toe/issues"
   },
-  "homepage": "https://github.com/sholland236/tic-tac-toe#readme",
+  "homepage": "https://sholland236.github.io/tic-tac-toe/",
   "dependencies": {
     "canvas-confetti": "^1.4.0"
   },
