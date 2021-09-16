@@ -29,6 +29,20 @@ const addPiece = (cell) => {
     cell.childNodes[1].classList.add(currentPlayer.pieceParent, currentPlayer.pieceAnimal);
 }
 
+const checkForCat = (cellsArray) => {
+    if (cellsArray.classList.contains("fa-cat")) {
+        return true;
+    }
+    return false;
+}
+
+const checkForDog = (cellsArray) => {
+    if (cellsArray.classList.contains("fa-dog")) {
+        return true;
+    }
+    return false;
+}
+
 const checkForWinner = () => {
     const cellOne = document.querySelector("#cell-one");
     const cellTwo = document.querySelector("#cell-two");
@@ -40,39 +54,27 @@ const checkForWinner = () => {
     const cellEight = document.querySelector("#cell-eight");
     const cellNine = document.querySelector("#cell-nine");
     let cellsArray = [[cellOne, cellTwo, cellThree], [cellFour, cellFive, cellSix], [cellSeven, cellEight, cellNine]];
-    if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[0][1].classList.contains("fa-cat") && cellsArray[0][2].classList.contains("fa-cat")) {
+    if (
+        (checkForCat(cellsArray[0][0]) && checkForCat(cellsArray[0][1]) && checkForCat(cellsArray[0][2]))
+        || (checkForDog(cellsArray[0][0]) && checkForDog(cellsArray[0][1]) && checkForDog(cellsArray[0][2]))
+        || (checkForCat(cellsArray[1][0]) && checkForCat(cellsArray[1][1]) && checkForCat(cellsArray[1][2]))
+        || (checkForDog(cellsArray[1][0]) && checkForDog(cellsArray[1][1]) && checkForDog(cellsArray[1][2]))
+        || (checkForCat(cellsArray[2][0]) && checkForCat(cellsArray[2][1]) && checkForCat(cellsArray[2][2]))
+        || (checkForDog(cellsArray[2][0]) && checkForDog(cellsArray[2][1]) && checkForDog(cellsArray[2][2]))
+        || (checkForCat(cellsArray[0][0]) && checkForCat(cellsArray[1][0]) && checkForCat(cellsArray[2][0]))
+        || (checkForDog(cellsArray[0][0]) && checkForDog(cellsArray[1][0]) && checkForDog(cellsArray[2][0]))
+        || (checkForCat(cellsArray[0][1]) && checkForCat(cellsArray[1][1]) && checkForCat(cellsArray[2][1]))
+        || (checkForDog(cellsArray[0][1]) && checkForDog(cellsArray[1][1]) && checkForDog(cellsArray[2][1]))
+        || (checkForCat(cellsArray[0][2]) && checkForCat(cellsArray[1][2]) && checkForCat(cellsArray[2][2]))
+        || (checkForDog(cellsArray[0][2]) && checkForDog(cellsArray[1][2]) && checkForDog(cellsArray[2][2]))
+        || (checkForCat(cellsArray[0][0]) && checkForCat(cellsArray[1][1]) && checkForCat(cellsArray[2][2]))
+        || (checkForDog(cellsArray[0][0]) && checkForDog(cellsArray[1][1]) && checkForDog(cellsArray[2][2]))
+        || (checkForCat(cellsArray[0][2]) && checkForCat(cellsArray[1][1]) && checkForCat(cellsArray[2][0]))
+        || (checkForDog(cellsArray[0][2]) && checkForDog(cellsArray[1][1]) && checkForDog(cellsArray[2][0])) 
+        )
+        {
         win = true;
-    } else if (cellsArray[1][0].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[1][2].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[2][0].classList.contains("fa-cat") && cellsArray[2][1].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[1][0].classList.contains("fa-cat") && cellsArray[2][0].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][1].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][1].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][2].classList.contains("fa-cat") && cellsArray[1][2].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][0].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][2].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][2].classList.contains("fa-cat") && cellsArray[1][1].classList.contains("fa-cat") && cellsArray[2][0].classList.contains("fa-cat")) {
-        win = true;
-    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[0][1].classList.contains("fa-dog") && cellsArray[0][2].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[1][0].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[1][2].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[2][0].classList.contains("fa-dog") && cellsArray[2][1].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[1][0].classList.contains("fa-dog") && cellsArray[2][0].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[0][1].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][1].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[0][2].classList.contains("fa-dog") && cellsArray[1][2].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[0][0].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][2].classList.contains("fa-dog")) {
-        win = true;
-    } else if (cellsArray[0][2].classList.contains("fa-dog") && cellsArray[1][1].classList.contains("fa-dog") && cellsArray[2][0].classList.contains("fa-dog")) {
-        win = true;
-    };
+    }
 }
 
 const playerWins = () => {
