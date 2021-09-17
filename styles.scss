@@ -44,9 +44,17 @@ h5 {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: $secondary-color;
+        // color: $secondary-color;
         font-size: 35px;
     }
+}
+
+.fa-dog {
+    color: $tertiary-color;
+}
+
+.fa-cat {
+    color: $secondary-color;
 }
 
 // make grid cells square
