@@ -41,8 +41,15 @@ h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #219ebc;
   font-size: 35px;
+}
+
+.fa-dog {
+  color: #023047;
+}
+
+.fa-cat {
+  color: #219ebc;
 }
 
 .grid > .grid__cell::before {
@@ -62,9 +69,6 @@ h5 {
 .players .player__icon {
   font-size: 45px;
   padding-bottom: 5px;
-}
-.players .player input {
-  max-width: 130px;
 }
 
 .button {
@@ -104,9 +108,6 @@ h5 {
   }
   .players > .player__icon {
     font-size: 25px;
-  }
-  .players > .player input {
-    max-width: 300px;
   }
 
   .button__restart {
