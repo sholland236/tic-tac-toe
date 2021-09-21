@@ -5,6 +5,7 @@
   "description": "\"tic-tac-toe game\"",
   "main": "index.html",
   "scripts": {
+    "build": "node build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d node_modules/canvas-confetti/dist"
   },
